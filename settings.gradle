@@ -1,0 +1,4 @@
+rootProject.name = 'mutant-rest'
+
+include 'mutant-api'
+include 'mutant-core'

@@ -1,0 +1,47 @@
+plugins {
+    id 'net.researchgate.release' version '2.5.0'
+    id 'nebula.rpm' version '4.3.0'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven'
+
+    group 'com.justo.mutant'
+
+    task setCompiler {
+        compileJava.options.compilerArgs << '-parameters'
+    }
+
+    compileJava.dependsOn setCompiler
+}
+
+subprojects {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    compileJava.options.encoding = 'UTF-8'
+    defaultTasks = ['clean', 'build']
+
+    project.ext.environment = System.getProperty("env", "dev")
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations.all {
+        exclude group: 'log4j'
+        exclude group: 'org.apache.tomcat.embed'
+        exclude module: 'spring-boot-starter-tomcat'
+
+        resolutionStrategy.cacheChangingModulesFor 600, 'seconds'
+    }
+}
+
+/******************************************************************************
+ * GRADLE WRAPPER CONTROL                                                     *
+ ******************************************************************************/
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
