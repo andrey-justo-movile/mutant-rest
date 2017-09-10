@@ -30,7 +30,6 @@ public class MutantController {
         
         boolean isMutant = mutantService.isMutant(request.getDna());
         dnaService.insert(request.getDna(), isMutant);
-        
         return isMutant ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 

@@ -35,7 +35,7 @@ public class DnaTest extends MainTest {
         Dna dna = dnaService.insert(new String[]{"ATAA", "ATTT", "AGCT", "ATTT"}, true);
         Assert.assertNotNull(dna);
         Assert.assertEquals(true, dna.isMutant());
-        Assert.assertEquals(4, dna.getDna().size());
+        Assert.assertEquals(1, dna.getDna().size());
         
         Stats stats = dnaService.getStats();
         Assert.assertEquals(1, stats.getnMutants());

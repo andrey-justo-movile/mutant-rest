@@ -22,11 +22,13 @@ public class Dna implements Serializable, Cloneable {
         this.id = id;
     }
 
+
     public List<String> getDna() {
         return dna;
     }
 
     public void setDna(List<String> dna) {
+
         this.dna = dna;
     }
 
