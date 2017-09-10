@@ -6,7 +6,7 @@
     <springProperty name="SENTRY_DNS" source="sentry.dns"/>
     <springProperty name="ENVIRONMENT" source="spring.profiles"/>
 
-    <property name="LOG_PATH" value="/logs/mutant-api/"/>
+    <property name="LOG_PATH" value="/justo-logs/mutant-api/"/>
     <property name="PATTERN_DEFAULT" value="%highlight([%-5level]) %magenta([%date{ISO8601}] [%32.32X{stamp}] [%60.60(%class{40}->%method:%line)]) %msg%n"/>
     <property name="PATTERN_EXCEPT"
               value="%highlight([%-5level]) %magenta([%date{ISO8601}] [%32.32X{stamp}] [%60.60(%class{40}->%method:%line)]) [THREAD: %thread]%n%msg%n%xException{8}%n%n"/>
