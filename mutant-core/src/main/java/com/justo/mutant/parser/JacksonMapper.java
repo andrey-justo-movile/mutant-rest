@@ -194,12 +194,12 @@ public class JacksonMapper implements Mapper {
 
     @Override
     public <T> T convert(Object obj, Object typeReference) {
-        throw new UnsupportedOperationException("Method not implemented");
+        return convert(obj,  (TypeReference<T>) typeReference);
     }
 
     @Override
     public <T> T readJson(String value, Object typeReference) {
-        throw new UnsupportedOperationException("Method not implemented");
+        return readJson(value, (TypeReference<T>) typeReference);
     }
 
 }

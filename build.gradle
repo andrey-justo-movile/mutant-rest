@@ -65,9 +65,11 @@ jacocoTestReport {
         html {
             enabled true
         }
+        
+        xml {
+        	enabled true
+        }
     }
 }
-
-test.jacoco.excludes << "*Configuration"
 
 test.finalizedBy(project.tasks.jacocoTestReport)

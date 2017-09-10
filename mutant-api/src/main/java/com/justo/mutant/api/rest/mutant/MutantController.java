@@ -23,15 +23,15 @@ public class MutantController {
     private DnaService dnaService;
     
     @RequestMapping(path = Paths.MUTANT, method = RequestMethod.POST)
-    public ResponseEntity<Boolean> checkMutant(@RequestBody MutantRequest request) {
+    public ResponseEntity<Void> checkMutant(@RequestBody MutantRequest request) {
         if (request == null) {
             throw new IllegalArgumentException("We need request to check if it's a mutant");
         }
         
         boolean isMutant = mutantService.isMutant(request.getDna());
-//        dnaService.
+        dnaService.insert(request.getDna(), isMutant);
         
-        return mutantService.isMutant(request.getDna()) ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        return isMutant ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
 }

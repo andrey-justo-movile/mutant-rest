@@ -1,8 +1,3 @@
-
-ehcache:
-    time-to-expire-seconds: 86400
-    heap-size: 64
-
 server:
     port: 8082
     error:
@@ -12,13 +7,22 @@ server:
 spring:
     jmx:
         enabled: true
+    data:
+        mongodb:
+            url: localhost:27017/mutant
+
+---
+
+spring:
+    profiles: test
+
 ---
 
 spring:
     profiles: stag
 
 sentry:
-    dns: "${sentry-notification-path}"
+    dns: "${sentry-path}"
 
 ---
 
@@ -29,4 +33,4 @@ ehcache:
     heap-size: 512
 
 sentry:
-    dns: "${sentry-notification-path}"
+    dns: "${sentry-path}"

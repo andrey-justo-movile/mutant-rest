@@ -1,12 +1,15 @@
 package com.justo.mutant.components.dna;
 
+import java.util.Arrays;
+
 import com.justo.mutant.components.dna.stats.Stats;
+import com.justo.mutant.log.Log;
 
 public class DnaService {
     
-    private final DnaRepository dnaRepository;
+    private final DnaRepositoryImpl dnaRepository;
     
-    public DnaService(DnaRepository dnaRepository) {
+    public DnaService(DnaRepositoryImpl dnaRepository) {
         this.dnaRepository = dnaRepository;
     }
     
@@ -15,6 +18,16 @@ public class DnaService {
         long noMutants = dnaRepository.countByMutant(false);
         
         return new Stats(mutants, noMutants);
+    }
+    
+    public Dna insert(String[] dna, boolean isMutant) {
+        Dna dnaObject = new Dna();
+        dnaObject.setDna(Arrays.asList(dna));
+        dnaObject.setMutant(isMutant);
+        dnaObject = dnaRepository.insert(dnaObject);
+        
+        Log.DATA_ACCESS.info("Dna {} inserted", dnaObject);
+        return dnaObject;
     }
 
 }

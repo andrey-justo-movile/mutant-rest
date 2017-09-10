@@ -12,9 +12,4 @@ public class HealthController {
         return ResponseEntity.ok().build();
     }
     
-    @RequestMapping(path = Paths.ERROR)
-    public ResponseEntity<Void> errorCheck() {
-        return ResponseEntity.badRequest().build();
-    }
-    
 }

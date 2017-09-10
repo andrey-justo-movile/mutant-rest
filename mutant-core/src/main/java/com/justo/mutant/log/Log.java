@@ -8,6 +8,8 @@ public interface Log {
     Logger CORE = LoggerFactory.getLogger("core");
 
     Logger EXCEPTION = LoggerFactory.getLogger("exceptions");
+    
+    Logger DATA_ACCESS = LoggerFactory.getLogger("data_access");
 
     Logger SYSTEM = LoggerFactory.getLogger("system");
     

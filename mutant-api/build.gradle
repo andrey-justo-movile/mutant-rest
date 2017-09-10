@@ -1,4 +1,13 @@
+apply plugin: 'application'
+apply plugin: 'net.researchgate.release'
+apply plugin: 'nebula.rpm'
 
+mainClassName="com.justo.mutant.api.main.APIMain"
+apply from: '../application.gradle'
+
+/******************************************************************************
+ * DEPENDENCIES                                                               *
+ ******************************************************************************/
 dependencies {
 
 	compile project(":mutant-core")
@@ -16,10 +25,24 @@ dependencies {
     // VALIDATOR
     compile "commons-validator:commons-validator:1.4.0"
     
-    // TESTS
+    // SENTRY
+	compile group: 'com.getsentry.raven', name: 'raven-logback', version: '7.0.0'
+    
+	// TESTS
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-
+    testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.0"
 }
 
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/com/justo/mutant/api/configuration/*',
+                    '**/com/justo/mutant/api/filter/*',
+                    '**/com/justo/mutant/api/main/*'
+            ])
+        })
+    }
+}

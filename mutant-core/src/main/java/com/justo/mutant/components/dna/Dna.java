@@ -1,16 +1,17 @@
 package com.justo.mutant.components.dna;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
 public class Dna implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 942090330252095159L;
-    
+
     @Id
     private String id;
-    private String dna;
+    private List<String> dna;
     private boolean mutant;
 
     public String getId() {
@@ -21,11 +22,11 @@ public class Dna implements Serializable, Cloneable {
         this.id = id;
     }
 
-    public String getDna() {
+    public List<String> getDna() {
         return dna;
     }
 
-    public void setDna(String dna) {
+    public void setDna(List<String> dna) {
         this.dna = dna;
     }
 
@@ -36,7 +37,7 @@ public class Dna implements Serializable, Cloneable {
     public void setMutant(boolean mutant) {
         this.mutant = mutant;
     }
-    
+
     @Override
     protected Dna clone() throws CloneNotSupportedException {
         return (Dna) super.clone();
