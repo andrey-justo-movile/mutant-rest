@@ -1,0 +1,32 @@
+
+ehcache:
+    time-to-expire-seconds: 86400
+    heap-size: 64
+
+server:
+    port: 8082
+    error:
+        whitelabel:
+            enabled: false
+
+spring:
+    jmx:
+        enabled: true
+---
+
+spring:
+    profiles: stag
+
+sentry:
+    dns: "${sentry-notification-path}"
+
+---
+
+spring:
+    profiles: prod
+
+ehcache:
+    heap-size: 512
+
+sentry:
+    dns: "${sentry-notification-path}"
