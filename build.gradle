@@ -8,14 +8,28 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'eclipse'
     apply plugin: 'maven'
+    apply plugin: 'jacoco'
 
     group 'com.justo.mutant'
+
+	repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+        	url 'https://repo.spring.io/libs-release'
+    	}
+    }
 
     task setCompiler {
         compileJava.options.compilerArgs << '-parameters'
     }
+    
+    jacoco {
+        toolVersion = '0.7.6.201602180812'
+	}
 
     compileJava.dependsOn setCompiler
+    jacocoTestReport.dependsOn test
 }
 
 subprojects {
@@ -26,10 +40,6 @@ subprojects {
 
     project.ext.environment = System.getProperty("env", "dev")
 
-    repositories {
-        mavenCentral()
-    }
-
     configurations.all {
         exclude group: 'log4j'
         exclude group: 'org.apache.tomcat.embed'
@@ -37,6 +47,7 @@ subprojects {
 
         resolutionStrategy.cacheChangingModulesFor 600, 'seconds'
     }
+    
 }
 
 /******************************************************************************
@@ -45,3 +56,18 @@ subprojects {
 task wrapper(type: Wrapper) {
     gradleVersion = '3.3'
 }
+
+/******************************************************************************
+ * JACOCO CODE COVERAGE                                                       *
+ ******************************************************************************/
+jacocoTestReport {
+    reports {
+        html {
+            enabled true
+        }
+    }
+}
+
+test.jacoco.excludes << "*Configuration"
+
+test.finalizedBy(project.tasks.jacocoTestReport)

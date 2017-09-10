@@ -1,16 +1,14 @@
 package com.justo.mutant.api.rest.mutant.to;
 
-import java.util.List;
-
 public class MutantRequest {
 
-    private List<String> dna;
+    private String[] dna;
 
-    public List<String> getDna() {
+    public String[] getDna() {
         return dna;
     }
 
-    public void setDna(List<String> dna) {
+    public void setDna(String[] dna) {
         this.dna = dna;
     }
 
