@@ -7,10 +7,6 @@ buildscript {
 	}
 }
 
-ext {
-    gradleWrapperVersion = project.gradleWrapperVersion
-}
-
 //apply plugin: 'application'
 apply plugin: 'spring-boot'
 apply plugin: 'net.researchgate.release'
