@@ -89,4 +89,3 @@ jacocoTestReport {
 }
 
 test.finalizedBy(project.tasks.jacocoTestReport)
-
