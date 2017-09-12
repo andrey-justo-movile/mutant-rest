@@ -3,7 +3,6 @@ apply plugin: 'net.researchgate.release'
 apply plugin: 'nebula.rpm'
 
 mainClassName="com.justo.mutant.api.main.APIMain"
-apply from: '../application.gradle'
 
 /******************************************************************************
  * DEPENDENCIES                                                               *
