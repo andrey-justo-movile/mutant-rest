@@ -34,14 +34,3 @@ dependencies {
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.0"
 }
-
-jacocoTestReport {
-    afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    '**/com/justo/mutant/configuration/*',
-                    '**/com/justo/mutant/log/*'
-            ])
-        })
-    }
-}

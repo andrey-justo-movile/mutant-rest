@@ -55,6 +55,12 @@ public class MutantTest extends MainTest {
     @Test
     public void invertedDiagonalTest() {
         String[] dna = {"ATGCGA", "CCGCGC", "TTCTGT", "ACAAGG", "CCTCTA", "TCACTG"};
+        Assert.assertEquals(false, mutantService.isMutant(dna));
+    }
+
+    @Test
+    public void diagonalTest() {
+        String[] dna = {"ATGCTA", "CCGGGC", "TTCTGT", "ATAAGG", "CCTCTA", "TCATTG"};
         Assert.assertEquals(true, mutantService.isMutant(dna));
     }
 

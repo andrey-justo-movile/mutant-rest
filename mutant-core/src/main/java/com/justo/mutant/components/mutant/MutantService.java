@@ -1,5 +1,6 @@
 package com.justo.mutant.components.mutant;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,13 +17,13 @@ public class MutantService {
         this.seqSize = seqSize;
         this.minSeqs = minSeqs;
         
-        String pattern = "[^";
+        StringBuilder pattern = new StringBuilder("[^");
         for (String currentChar: validChars) {
-            pattern += currentChar;
+            pattern.append(currentChar);
         }
-        pattern += "]";
+        pattern.append("]");
         
-        this.pattern = Pattern.compile(pattern);
+        this.pattern = Pattern.compile(pattern.toString());
     }
 
     public boolean isMutant(String[] dna) {
@@ -70,7 +71,6 @@ public class MutantService {
 
     private int matchDiagonals(String[] matrix, int rows, int cols, int row, int col) {
         int countD = 0;
-        int countInvertedD = 0;
         int count = 0;
         for (int k = 0; k < cols; k++) {
             if (cols > col + k + 1 && rows > row + k + 1 && matrix[row + k].charAt(col + k) == matrix[row + k + 1].charAt(col + k + 1)) {
@@ -79,21 +79,8 @@ public class MutantService {
                 countD = 0;
             }
 
-            int analyzeCol = cols - 1 - k;
-            if (rows > row + k + 1 && analyzeCol >= 0 && analyzeCol - col > 0
-                    && matrix[row + k].charAt(analyzeCol - col) == matrix[row + k + 1].charAt(analyzeCol - col - 1)) {
-                countInvertedD++;
-            } else {
-                countInvertedD = 0;
-            }
-
             if (countD >= seqSize - 1) {
                 countD = 0;
-                count++;
-            }
-
-            if (countInvertedD >= seqSize - 1) {
-                countInvertedD = 0;
                 count++;
             }
         }
@@ -108,7 +95,7 @@ public class MutantService {
         
         for (String row : dna) {
             if (StringUtils.isBlank(row) || row.length() != dna.length) {
-                throw new IllegalArgumentException("The dna " + dna + " needs to be a square matrix");
+                throw new IllegalArgumentException("The dna " + Arrays.asList(dna) + " needs to be a square matrix");
             }
             
             Matcher matcher = pattern.matcher(row);

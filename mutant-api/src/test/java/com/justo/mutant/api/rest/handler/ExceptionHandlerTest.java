@@ -1,5 +1,7 @@
 package com.justo.mutant.api.rest.handler;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -33,7 +35,7 @@ public class ExceptionHandlerTest extends MainTest {
     @Test
     public void checkIllegalArgumentsTest() {
         String[] dna = {"ATGCGA", "CAGTGC", "TTAGT", "AGAGGG", "CTCCTA", "TCACTG"};
-        MutantRequest request = new MutantRequest(dna);
+        MutantRequest request = new MutantRequest(Arrays.asList(dna));
         ResponseEntity<Void> response = this.restTemplate.postForEntity("http://localhost:" + port + Paths.MUTANT, request, Void.class);
         Assert.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY, response.getStatusCode());
     }

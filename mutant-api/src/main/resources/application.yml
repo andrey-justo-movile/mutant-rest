@@ -9,7 +9,7 @@ spring:
         enabled: true
     data:
         mongodb:
-            url: localhost:27017/mutant
+            url: mongodb-2-server-1:27017/mutant
 
 ---
 

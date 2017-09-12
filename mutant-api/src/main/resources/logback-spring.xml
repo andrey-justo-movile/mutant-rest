@@ -24,61 +24,29 @@
         <environment>${ENVIRONMENT}</environment>
     </appender>
 
-    <appender name="system" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/system.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/system.log.k2y-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${PATTERN_DEFAULT}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="data_access" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/data_access.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/data_access.log.k2y-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${PATTERN_DEFAULT}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="exceptions" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/exceptions.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/exceptions.log.k2y-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${PATTERN_EXCEPT}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="core" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}/core.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/core.log.k2y-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${PATTERN_CORE}</pattern>
-        </encoder>
-    </appender>
+	<appender name="system" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>${PATTERN_DEFAULT}</pattern>
+		</layout>
+	</appender>
+	
+	<appender name="data_access" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>${PATTERN_DEFAULT}</pattern>
+		</layout>
+	</appender>
+	
+	<appender name="exceptions" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>${PATTERN_DEFAULT}</pattern>
+		</layout>
+	</appender>
+	
+	<appender name="core" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>${PATTERN_DEFAULT}</pattern>
+		</layout>
+	</appender>
 
     <root level="WARN">
         <appender-ref ref="core"/>

@@ -1,5 +1,6 @@
 package com.justo.mutant.api.rest.mutant;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,13 @@ public class MutantController {
     
     @RequestMapping(path = Paths.MUTANT, method = RequestMethod.POST)
     public ResponseEntity<Void> checkMutant(@RequestBody MutantRequest request) {
-        if (request == null) {
+        if (request == null || CollectionUtils.isEmpty(request.getDna())) {
             throw new IllegalArgumentException("We need request to check if it's a mutant");
         }
         
-        boolean isMutant = mutantService.isMutant(request.getDna());
-        dnaService.insert(request.getDna(), isMutant);
+        String[] newDna = request.getDna().toArray(new String[request.getDna().size()]);
+        boolean isMutant = mutantService.isMutant(newDna);
+        dnaService.insert(newDna, isMutant);
         return isMutant ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 

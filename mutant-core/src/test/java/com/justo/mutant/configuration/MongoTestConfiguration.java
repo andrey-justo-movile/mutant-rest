@@ -21,8 +21,8 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 @Configuration
 public class MongoTestConfiguration {
 
-    private static final String DB_NAME = "mutant_tests"
-;    
+    private static final String DB_NAME = "mutant_tests";
+    
     @Bean
     public MongodProcess mongoProcess() throws UnknownHostException, IOException {
         MongodStarter starter = MongodStarter.getDefaultInstance();

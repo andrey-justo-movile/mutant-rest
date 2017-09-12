@@ -1,22 +1,20 @@
 package com.justo.mutant.api.rest.mutant.to;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public class MutantRequest {
 
-    private String[] dna;
+    private final List<String> dna;
 
-    public MutantRequest() {
-    }
-
-    public MutantRequest(String[] dna) {
+    @JsonCreator
+    public MutantRequest(List<String> dna) {
         this.dna = dna;
     }
 
-    public String[] getDna() {
+    public List<String> getDna() {
         return dna;
-    }
-
-    public void setDna(String[] dna) {
-        this.dna = dna;
     }
 
     @Override
