@@ -9,11 +9,6 @@ buildscript {
     }
 }
 
-ext {
-    revision = org.ajoberstar.grgit.Grgit.open(file('..')).head().abbreviatedId
-    release = project.ext.environment != "prod" ? project.ext.revision : "Final"
-}
-
 task setUpProjectProperties(dependsOn: jar) {
     doFirst {
         project.ext.classpath = "../libs/*:../resources/*:../$jar.archiveName"
