@@ -59,4 +59,13 @@ sudo ./bootstrap/start.sh
 
 
 # Heroku
-- 
+- Configure your heroku client
+- Then to deploy it execute:
+```sh
+heroku config:set GRADLE_TASK="mutant-api:build"
+git push heroku master
+```
+
+# Production tests
+
+You can test the application in https://mutant-api.herokuapp.com
