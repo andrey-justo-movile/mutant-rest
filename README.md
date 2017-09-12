@@ -30,11 +30,10 @@ curl -X GET http://localhost:8082/stats
 ```sh
 ./gradlew clean findbugsAll
 ```
-
-- The command will generate 3 types of reports
--- 1 - executes JUnit Tests and generate html files in mutant-api/build/reports/tests/test/index.html and mutant-core/build/reports/tests/test/index.html
--- 2 - executes Jacoco Code Coverage and generate html files in mutant-api/build/reports/jacoco/test/html/index.html and mutant-core/build/reports/jacoco/test/html/index.html. Also it generates a .exec file to use in a Sonar integration
--- 3 - executes Findbugs plugin and generate html files in mutant-api/build/reports/findbugs/main.html mutant-core/build/reports/findbugs/main.html
+The command will generate 3 types of reports
+- 1 - executes JUnit Tests and generate html files in mutant-api/build/reports/tests/test/index.html and mutant-core/build/reports/tests/test/index.html
+- 2 - executes Jacoco Code Coverage and generate html files in mutant-api/build/reports/jacoco/test/html/index.html and mutant-core/build/reports/jacoco/test/html/index.html. Also it generates a .exec file to use in a Sonar integration
+- 3 - executes Findbugs plugin and generate html files in mutant-api/build/reports/findbugs/main.html mutant-core/build/reports/findbugs/main.html
 
 
 # Deploy
