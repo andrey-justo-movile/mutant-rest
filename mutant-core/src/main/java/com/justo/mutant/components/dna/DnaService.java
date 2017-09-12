@@ -1,7 +1,5 @@
 package com.justo.mutant.components.dna;
 
-import java.util.Arrays;
-
 import com.justo.mutant.components.dna.stats.Stats;
 import com.justo.mutant.log.Log;
 
@@ -22,7 +20,7 @@ public class DnaService {
     
     public Dna insert(String[] dna, boolean isMutant) {
         Dna dnaObject = new Dna();
-        dnaObject.setDna(Arrays.asList(dna));
+        dnaObject.setDna(String.join("", dna));
         dnaObject.setMutant(isMutant);
         dnaObject = dnaRepository.insert(dnaObject);
         

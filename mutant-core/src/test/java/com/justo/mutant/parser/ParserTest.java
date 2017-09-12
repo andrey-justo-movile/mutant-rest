@@ -41,7 +41,7 @@ public class ParserTest extends MainTest {
     
     @Test
     public void fromListTest() {
-        String json = "[{ \"id\": \"test\",\"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"], \"mutant\": \"true\"}]";
+        String json = "[{ \"dna\":\"ATGCGACAGTGCTTATGTAGAAGGCCCCTATCACTG\", \"mutant\": \"true\"}]";
 
         List<Dna> dnas = mapper.readJson(json, DNA_RESULT_REFERENCE);
         Assert.assertNotNull("Dnas can't be null", dnas);
@@ -50,13 +50,12 @@ public class ParserTest extends MainTest {
 
     @Test
     public void fromJsonTest() {
-        String json = "{ \"id\": \"test\",\"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"TCACTG\"], \"mutant\": \"true\"}";
+        String json = "{ \"dna\":\"ATGCGACAGTGCTTATGTAGAAGGCCCCTATCACTG\", \"mutant\": \"true\"}";
 
         Dna dna = mapper.readJson(json, Dna.class);
         Assert.assertNotNull("Dna can't be null", dna);
         Assert.assertTrue("This dna is a mutant", dna.isMutant());
-        Assert.assertEquals("test", dna.getId());
-        Assert.assertEquals(6, dna.getDna().size());
+        Assert.assertEquals("ATGCGACAGTGCTTATGTAGAAGGCCCCTATCACTG", dna.getDna());
     }
 
 }

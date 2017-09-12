@@ -1,8 +1,11 @@
 package com.justo.mutant.components.dna;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+
+import com.justo.mutant.log.Log;
 
 
 public class DnaRepositoryImpl {
@@ -20,7 +23,11 @@ public class DnaRepositoryImpl {
     }
     
     public Dna insert(Dna dnaObject) {
-        template.insert(dnaObject, DNA_COLLECTION_NAME);
+        try {
+            template.insert(dnaObject, DNA_COLLECTION_NAME);
+        } catch (DuplicateKeyException e) {
+            Log.DATA_ACCESS.warn("This dna {} have been already checked", dnaObject, e);
+        }
         return dnaObject;
     }
 }

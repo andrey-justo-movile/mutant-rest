@@ -35,7 +35,20 @@ public class DnaTest extends MainTest {
         Dna dna = dnaService.insert(new String[]{"ATAA", "ATTT", "AGCT", "ATTT"}, true);
         Assert.assertNotNull(dna);
         Assert.assertEquals(true, dna.isMutant());
-        Assert.assertEquals(4, dna.getDna().size());
+        
+        Stats stats = dnaService.getStats();
+        Assert.assertEquals(1, stats.getnMutants());
+        Assert.assertEquals(0, stats.getnNonMutants());
+    }
+    
+    @Test
+    public void persistManyTest() {
+        Dna dna = dnaService.insert(new String[]{"ATAA", "ATTT", "AGCT", "ATTT"}, true);
+        Dna dna2 = dnaService.insert(new String[]{"ATAA", "ATTT", "AGCT", "ATTT"}, true);
+        Assert.assertNotNull(dna);
+        Assert.assertEquals(true, dna2.isMutant());
+        Assert.assertNotNull(dna);
+        Assert.assertEquals(true, dna2.isMutant());
         
         Stats stats = dnaService.getStats();
         Assert.assertEquals(1, stats.getnMutants());
