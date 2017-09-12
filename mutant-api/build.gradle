@@ -25,9 +25,6 @@ dependencies {
 
     // VALIDATOR
     compile "commons-validator:commons-validator:1.4.0"
-    
-    // SENTRY
-	compile group: 'com.getsentry.raven', name: 'raven-logback', version: '7.0.0'
 	
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
     

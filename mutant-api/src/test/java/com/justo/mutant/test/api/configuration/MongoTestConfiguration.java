@@ -1,4 +1,4 @@
-package com.justo.mutant.api.configuration;
+package com.justo.mutant.test.api.configuration;
 
 import java.io.IOException;
 import java.net.UnknownHostException;

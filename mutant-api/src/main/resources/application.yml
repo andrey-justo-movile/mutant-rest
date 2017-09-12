@@ -9,9 +9,7 @@ spring:
         enabled: true
     data:
         mongodb:
-            url: ds053126.mlab.com:53126/heroku_1fccdwbd
-            username: andrey.justo
-            password: mutant_test
+            uri: mongodb://andrey.justo:mutant_test@ds053126.mlab.com:53126/heroku_1fccdwbd
 
 ---
 

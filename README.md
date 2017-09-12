@@ -47,7 +47,7 @@ You can deploy the application in two ways
 
 - This deploy generates a .rpm file to put in any server that have the requirements for this application
 ```sh
-./gradlew :care-api:clean :care-core:clean :care-core:findbugsAll :care-api:release -Pgradle.useAutomaticVersion=true -Prelease.releaseVersion=$version -Denv=prod 
+./gradlew :mutant-api:clean :mutant-api:release -Pgradle.useAutomaticVersion=true -Prelease.releaseVersion=$version -Denv=prod 
 ```
 
 - Once you generated the .rpm file you can upload it to the server and then execute the commands below:

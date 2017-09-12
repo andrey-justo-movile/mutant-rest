@@ -13,9 +13,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.justo.mutant.api.configuration.MongoTestConfiguration;
 import com.justo.mutant.configuration.DnaConfiguration;
 import com.justo.mutant.configuration.MutantConfiguration;
+import com.justo.mutant.test.api.configuration.MongoTestConfiguration;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)

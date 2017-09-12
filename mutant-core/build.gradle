@@ -23,9 +23,13 @@ dependencies {
     compile "org.slf4j:slf4j-api:1.7+"
     compile "org.slf4j:jcl-over-slf4j:1.7+"
     compile "org.slf4j:log4j-over-slf4j:1.7+"
+
+    // SENTRY
+    compile "com.getsentry.raven:raven-logback:8.0.2"
     
     // SPRING
     compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter:${springBootVersion}"
 
     // TESTS
