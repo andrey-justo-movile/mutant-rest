@@ -1,8 +1,22 @@
-apply plugin: 'application'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    	classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}" 
+	}
+}
+
+ext {
+    gradleWrapperVersion = project.gradleWrapperVersion
+}
+
+//apply plugin: 'application'
+apply plugin: 'spring-boot'
 apply plugin: 'net.researchgate.release'
 apply plugin: 'nebula.rpm'
 
-mainClassName="com.justo.mutant.api.main.APIMain"
+//mainClassName="com.justo.mutant.api.main.APIMain"
 //apply from: '../application.gradle'
 
 /******************************************************************************
