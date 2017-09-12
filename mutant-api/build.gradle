@@ -1,24 +1,9 @@
 apply plugin: 'application'
 apply plugin: 'net.researchgate.release'
 apply plugin: 'nebula.rpm'
-apply plugin: 'com.google.cloud.tools.appengine'
 
 mainClassName="com.justo.mutant.api.main.APIMain"
 apply from: '../application.gradle'
-
-/******************************************************************************
- * BUILDSCRIPT                                                                *
- ******************************************************************************/
-
-buildscript {    // Configuration for building
-  repositories {
-    jcenter()    // Bintray's repository - a fast Maven Central mirror & more
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'    // latest App Engine Gradle tasks
-  }
-}
 
 /******************************************************************************
  * DEPENDENCIES                                                               *
@@ -45,9 +30,6 @@ dependencies {
 	compile group: 'com.getsentry.raven', name: 'raven-logback', version: '7.0.0'
 	
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
-	
-	// GOOGLE APP ENGINE DEPLOY
-  	compile 'com.google.appengine:appengine:+'
     
 	// TESTS
     testCompile 'junit:junit:4.12'
@@ -56,17 +38,3 @@ dependencies {
     testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.0.0"
 }
 
-appengine {
-	
-  	run {  
-  	}
-
-	stage {
-		appEngineDirectory = "${project.projectDir}/src/main/appengine"
-  	}
-
-  	deploy { 
-    	stopPreviousVersion = true
-    	promote = true            
-  	}
-}

@@ -38,3 +38,25 @@ curl -X GET http://localhost:8082/stats
 
 
 # Deploy
+
+You can deploy the application in two ways
+- RPM and Manual Deploy
+- Heroku
+
+# RPM and Manual Deploy
+
+- This deploy generates a .rpm file to put in any server that have the requirements for this application
+```sh
+./gradlew :care-api:clean :care-core:clean :care-core:findbugsAll :care-api:release -Pgradle.useAutomaticVersion=true -Prelease.releaseVersion=$version -Denv=prod 
+```
+
+- Once you generated the .rpm file you can upload it to the server and then execute the commands below:
+```sh
+rpm2cpio ./path-to-rpm.rpm | cpio -idmv
+cd /justo/mutant-api
+sudo ./bootstrap/start.sh
+```
+
+
+# Heroku
+- 
