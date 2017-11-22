@@ -12,7 +12,7 @@ import com.justo.mutant.components.dna.DnaService;
 import com.justo.mutant.components.dna.stats.Stats;
 
 @RestController
-public class StatstController {
+public class StatsController {
 
     @Autowired
     private DnaService dnaService;
