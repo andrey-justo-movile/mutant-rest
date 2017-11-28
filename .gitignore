@@ -4,6 +4,8 @@
 .project
 */.settings/*
 .settings/
+build/*
+bin/*
 # Log file
 *.log
 
