@@ -83,31 +83,31 @@ public class MutantTest extends MainTest {
 
     @Test
     public void notMutantTest() {
-        String[] notMutant = {"ACGCG", "TCTAG", "GCACC", "TATAG", "GCGCG",};
+        String[] notMutant = {"ACGCG", "TCTAG", "GCACC", "TATAG", "GCGCG"};
         Assert.assertEquals(false, mutantService.isMutant(notMutant));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void notValidDnaTest() {
-        String[] notValidDna = {"ACGCG", "TCTA", "GCACC", "TAG", "GCGCG",};
+        String[] notValidDna = {"ACGCG", "TCTA", "GCACC", "TAG", "GCGCG"};
         mutantService.isMutant(notValidDna);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void notValid2DnaTest() {
-        String[] notValidDna = {"ACGCG", "TCTAB", "GCACC", "TAGYY", "GCGCG",};
+        String[] notValidDna = {"ACGCG", "TCTAB", "GCACC", "TAGYY", "GCGCG"};
         mutantService.isMutant(notValidDna);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void notValidDna3Test() {
-        String[] notMutant = {"", "TCTAG", "GCACC", "TATAG", "GCGCG",};
+        String[] notMutant = {"", "TCTAG", "GCACC", "TATAG", "GCGCG"};
         mutantService.isMutant(notMutant);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void notValidDna4Test() {
-        String[] notMutant = {"TCTAG", "GCACC", "TATAG", "GCGCG",};
+        String[] notMutant = {"TCTAG", "GCACC", "TATAG", "GCGCG"};
         mutantService.isMutant(notMutant);
     }
 

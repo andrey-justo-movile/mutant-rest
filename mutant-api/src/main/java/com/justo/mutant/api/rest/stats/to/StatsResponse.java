@@ -13,7 +13,7 @@ public class StatsResponse {
         if (countHumanDna == 0) {
             this.ratio = 0L;
         } else {
-            this.ratio = (double) countMutantDna / countHumanDna;
+            this.ratio = (double) countMutantDna / (countMutantDna + countHumanDna);
         }
     }
 
